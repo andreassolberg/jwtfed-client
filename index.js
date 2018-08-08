@@ -6,11 +6,15 @@ const
 const Koa = require('koa');
 const app = new Koa();
 const router = new Router();
-const PORT = 7000
+const PORT = 3000
 
-const client = new Client('https://serviceprovider.andreas.labs.uninett.no/application1007')
+const client = new Client('https://jwt-client.andreas.labs.uninett.no/yay')
 
 router.get('/', async (ctx, next) => {
+  ctx.body = 'OK!'
+})
+
+router.get('/auth', async (ctx, next) => {
   let url = await client.getAuthenticationRequest()
   console.log("Sending user ahead with this authentication request " + url)
   ctx.redirect(url)
@@ -18,8 +22,6 @@ router.get('/', async (ctx, next) => {
 router.get('/callback', async (ctx, next) => {
   ctx.body = 'Hello callback()'
 })
-
-
 
 
 app
