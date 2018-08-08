@@ -1,0 +1,21 @@
+{
+  "name": "jwtfedclient",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-ejs": "^4.1.2",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.8.2",
+    "node-jose": "^1.0.0",
+    "openid-client": "^2.2.1"
+  }
+}
