@@ -14,7 +14,7 @@ spec:
         image: andreassolberg/jwtfed-client:latest  # or just image: redishello:1.0
         env:
         - name: ISSUER
-          value: "https://jwt-idp.andreas.labs.uninett.no/"
+          value: "https://jwt-client.andreas.labs.uninett.no/"
         resources:
           requests:
             cpu: 10m
