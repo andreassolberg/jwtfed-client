@@ -13,8 +13,8 @@ spec:
       - name: master
         image: andreassolberg/jwtfed-client:latest  # or just image: redishello:1.0
         env:
-        - name: ISSUER
-          value: "https://jwt-client.andreas.labs.uninett.no/"
+        - name: CLIENT_ID
+          value: "https://jwt-client.andreas.labs.uninett.no/yay"
         resources:
           requests:
             cpu: 10m

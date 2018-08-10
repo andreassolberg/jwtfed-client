@@ -3,8 +3,10 @@
   "redirect_uri": "https://jwt-client.andreas.labs.uninett.no/callback",
   "authorityHints": ["https://ntnu.andreas.labs.uninett.no/"],
   "metadata": {
+    "client_id": "https://jwt-client.andreas.labs.uninett.no/yay",
     "redirect_uris": ["https://jwt-client.andreas.labs.uninett.no/callback"],
-    "client_name": "Cool service provider"
+    "client_name": "Cool service provider",
+    "localHint": "local"
   },
   "kid": "key1",
   "jwks": [

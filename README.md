@@ -17,6 +17,10 @@ kubectl delete service jwtfed-client
 kubectl apply -f deployment.yaml
 ```
 
+```
+kubectl delete deployment jwtfed-client
+kubectl apply -f deployment.yaml
+```
 
 ## Local build process
 
