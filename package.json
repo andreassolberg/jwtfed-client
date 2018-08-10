@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cli-highlight": "^2.0.0",
     "jwtfed": "^1.2.1",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",

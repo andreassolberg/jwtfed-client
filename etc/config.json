@@ -1,8 +1,9 @@
 {
   "iss": "https://jwt-client.andreas.labs.uninett.no/yay",
+  "redirect_uri": "https://jwt-client.andreas.labs.uninett.no/callback",
   "authorityHints": ["https://ntnu.andreas.labs.uninett.no/"],
   "metadata": {
-    "redirect_uris": ["http://alala.np/callback"],
+    "redirect_uris": ["https://jwt-client.andreas.labs.uninett.no/callback"],
     "client_name": "Cool service provider"
   },
   "kid": "key1",
@@ -36,6 +37,31 @@
       ],
       "ext": true,
       "kid": "key1"
+    }
+  ],
+  "trustroot": [
+    {
+      "sub": "https://edugain.andreas.labs.uninett.no/openid",
+      "subTypes": ["openidProvider", "openidClient"],
+      "metadata": {
+        "openidClient": {
+          "special": true
+        }
+      },
+      "jwks": [
+        {
+          "kty": "RSA",
+          "use": "sig",
+          "alg": "RS256",
+          "n": "qnd5_krrHKzuJzb5_YEt4sP-YOGSbfVL_g06h1Q-q0nzTsO8MwtWVQx1nuR1cV-ruNwF2sFFGRNejVNKOxL8n5tGuYgJBRJBB5KcbnvRqSEMpObJxQzQuQrzxXFqMlmVRaaCINL5qFWTmdJz79cPleBBPr9DsD9O-nDSGV-R0LT3YWH0SrY5cEDVasUhWnFRY5eOTMRtxUB2m8FXBaZVAlIr5-Gy-SaTmybKQJ74iVpG16Hbw4t0tw14ReEO0aAsDq24cU7bHOueWnxZPfOltueZnIEKe3_eAmh-fieLvkkZSKqXRWKg_tZDbnjUqWH2lVvC2ReEOrns971V0Hjcbw",
+          "e": "AQAB",
+          "key_ops": [
+            "verify"
+          ],
+          "ext": true,
+          "kid": "edugain"
+        }
+      ]
     }
   ]
 }

@@ -20,7 +20,7 @@ nconf.argv()
 
 console.log("ISS", nconf.get('iss'))
 
-nconf.required(['iss']);
+nconf.required(['iss', 'redirect_uri', 'redirect_uri', 'trustroot']);
 
 const healthcheck = new Router();
 healthcheck.get('/', async (ctx, next) => {
@@ -32,7 +32,7 @@ const webfinger = new JWTWebFinger(nconf.get('iss'), nconf.get('metadata'), ncon
 
 
 
-const client = new Client(nconf.get('iss'))
+const client = new Client(nconf.get('iss'), nconf.get('redirect_uri'), nconf.get('trustroot'))
 
 const router = new Router();
 router.get('/', async (ctx, next) => {
