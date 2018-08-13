@@ -5,11 +5,14 @@ const
   morgan = require('koa-morgan'),
   JWTWebFinger = require('./lib/JWTWebFinger'),
   nconf = require('nconf'),
-  errors = require('koa-errors')
+  errors = require('koa-errors'),
+  session = require('koa-session')
 
 const Koa = require('koa');
 const app = new Koa();
 const PORT = 3000
+
+app.keys = nconf.get('keys')
 
 nconf.argv()
   .env({
@@ -20,7 +23,7 @@ nconf.argv()
 
 console.log("ISS", nconf.get('iss'))
 
-nconf.required(['iss', 'redirect_uri', 'redirect_uri', 'trustroot']);
+nconf.required(['iss', 'redirect_uri', 'redirect_uri', 'trustroot', 'keys', 'sessionConfig']);
 
 const healthcheck = new Router();
 healthcheck.get('/', async (ctx, next) => {
@@ -29,10 +32,7 @@ healthcheck.get('/', async (ctx, next) => {
 
 
 const webfinger = new JWTWebFinger(nconf.get('iss'), nconf.get('metadata'), nconf.get('authorityHints'), nconf.get('kid'), nconf.get('jwks'))
-
-
-
-const client = new Client(nconf.get('iss'), nconf.get('redirect_uri'), nconf.get('trustroot'))
+const client = new Client(nconf.get('iss'), nconf.get('redirect_uri'), nconf.get('trustroot'), nconf.get('privateJwks'))
 
 const router = new Router();
 router.get('/', async (ctx, next) => {
@@ -41,7 +41,7 @@ router.get('/', async (ctx, next) => {
 router.get('/auth', async (ctx, next) => {
 
   if (ctx.query && ctx.query.id) {
-    let url = await client.getAuthenticationRequest(ctx.query.id)
+    let url = await client.getAuthenticationRequest(ctx.session, ctx.query.id)
     console.log("Sending user ahead with this authentication request " + url)
     ctx.redirect(url)
   } else {
@@ -51,12 +51,23 @@ router.get('/auth', async (ctx, next) => {
 
 })
 router.get('/callback', async (ctx, next) => {
-  ctx.body = 'Hello callback()'
+
+  const state = ctx.session.state
+  // const nonce = ctx.session.nonce
+
+  return client.authorizationCallback(ctx.query, { state }) // => Promise
+    .then(function (tokenSet) {
+      console.log('received and validated tokens %j', tokenSet);
+      console.log('validated id_token claims %j', tokenSet.claims);
+      ctx.body = tokenSet
+    })
+  // ctx.body = 'Hello callback()'
 })
 
 
 app
   .use(errors())
+  .use(session(nconf.get('sessionConfig'), app))
   .use(morgan('combined'))
   .use(healthcheck.routes())
   .use(webfinger.routes())
