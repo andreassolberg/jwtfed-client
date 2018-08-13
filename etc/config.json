@@ -6,6 +6,7 @@
     "client_id": "https://jwt-client.andreas.labs.uninett.no/yay",
     "redirect_uris": ["https://jwt-client.andreas.labs.uninett.no/callback"],
     "client_name": "Cool service provider",
+    "token_endpoint_auth_method": "private_key_jwt",
     "localHint": "local"
   },
   "kid": "key1",
