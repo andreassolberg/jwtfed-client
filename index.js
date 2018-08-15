@@ -55,13 +55,19 @@ router.get('/callback', async (ctx, next) => {
   const state = ctx.session.state
   // const nonce = ctx.session.nonce
 
+
   return client.authorizationCallback(ctx.query, { state }) // => Promise
-    .then(function (tokenSet) {
-      console.log('received and validated tokens %j', tokenSet);
-      console.log('validated id_token claims %j', tokenSet.claims);
-      ctx.body = tokenSet
+    .then(function (data) {
+      // console.log('received and validated tokens %j', tokenSet);
+      // console.log('validated id_token claims %j', tokenSet.claims);
+
+      // if (!tokenSet.access_token) {
+      //   throw new Error("Could not get access token")
+      // }
+
+      ctx.body = JSON.stringify(data, undefined, 2)
     })
-  // ctx.body = 'Hello callback()'
+
 })
 
 
