@@ -8,8 +8,8 @@ const
   errors = require('koa-errors'),
   session = require('koa-session')
 
-const Koa = require('koa');
-const app = new Koa();
+const Koa = require('koa')
+const app = new Koa()
 const PORT = 3000
 
 app.keys = nconf.get('keys')
@@ -23,7 +23,7 @@ nconf.argv()
 
 console.log("ISS", nconf.get('iss'))
 
-nconf.required(['iss', 'redirect_uri', 'redirect_uri', 'trustroot', 'keys', 'sessionConfig']);
+nconf.required(['iss', 'redirect_uri', 'redirect_uri', 'trustroot', 'keys', 'sessionConfig'])
 
 const healthcheck = new Router();
 healthcheck.get('/', async (ctx, next) => {
