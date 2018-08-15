@@ -1,6 +1,6 @@
 {
   "name": "jwtfedclient",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "cli-highlight": "^2.0.0",
-    "jwtfed": "^1.6.0",
+    "jwtfed": "^1.7.0",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
     "koa-ejs": "^4.1.2",
