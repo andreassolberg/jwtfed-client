@@ -21,8 +21,6 @@ nconf.argv()
   })
   .file({ file: 'etc/config.json' })
 
-console.log("ISS", nconf.get('iss'))
-
 nconf.required(['iss', 'redirect_uri', 'redirect_uri', 'trustroot', 'keys', 'sessionConfig'])
 
 const healthcheck = new Router();
