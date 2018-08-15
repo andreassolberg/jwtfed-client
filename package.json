@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "cli-highlight": "^2.0.0",
-    "jwtfed": "^1.2.1",
+    "jwtfed": "^1.6.0",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
     "koa-ejs": "^4.1.2",
@@ -21,7 +21,7 @@
     "koa-session": "^5.8.2",
     "nconf": "^0.10.0",
     "node-jose": "^1.0.0",
-    "openid-client": "^2.2.1",
+    "openid-client": "^2.3.0",
     "uuid": "^3.3.2"
   }
 }
